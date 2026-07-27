@@ -1,6 +1,6 @@
 export const profile = {
   name: "Atimad BEL CAID",
-  title: "AI Engineer & Computer Vision Specialist",
+  title: "AI Engineer & ML Specialist",
   bio: "Master's student in Artificial Intelligence passionate about building intelligent systems using NLP, Computer Vision and Generative AI.",
   description: "I'm an AI Engineer specializing in Computer Vision, Natural Language Processing,ML,DL, and Generative AI. I design and deploy intelligent systems that solve real-world problems — from real-time object tracking and sign language translation to semantic search and conversational AI. I combine research-driven approaches with production-ready engineering to build scalable, human-centered AI solutions.",
   photo: "/images/profile.jpeg",
