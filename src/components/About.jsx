@@ -1,96 +1,140 @@
 import { motion } from "framer-motion";
-import { FaBrain, FaRobot, FaCode } from "react-icons/fa";
+import { FaBrain, FaRobot, FaCode, FaProjectDiagram, FaBriefcase, FaMicrochip } from "react-icons/fa";
 import { profile } from "../data/profile";
-import AIRobotAvatar from "./AIRobotAvatar";
+import PremiumAIAvatar from "./PremiumAIAvatar";
 
 const iconMap = { FaBrain, FaRobot, FaCode };
 
 function About() {
+  const statIcons = {
+    projects: <FaProjectDiagram className="text-blue-400 text-lg" />,
+    internships: <FaBriefcase className="text-purple-400 text-lg" />,
+    technologies: <FaMicrochip className="text-pink-400 text-lg" />
+  };
+
   return (
-    <section id="about" className="section-padding">
-      <div className="container-custom">
+    <section id="about" className="py-20 md:py-28">
+      <div className="max-w-6xl mx-auto px-4 md:px-8">
+        
+        {/* Titre */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-12"
         >
-          <h2 className="section-title">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">
             <span className="gradient-text">About Me</span>
           </h2>
-          <p className="section-subtitle">
-            Passionate about building intelligent systems that make a difference
+          <p className="text-gray-400 text-sm md:text-base mt-2">
+            AI Engineer specializing in Computer Vision, NLP & Generative AI
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        {/* Grille principale */}
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          
+          {/* Avatar */}
           <motion.div
-            initial={{ opacity: 0, x: -60 }}
+            initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="relative"
+            className="flex flex-col items-center"
           >
-            <div className="relative aspect-square w-full max-w-[450px] mx-auto">
-              {/* Effet de lueur derrière l'avatar */}
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 via-purple-600/20 to-pink-600/20 rounded-full blur-3xl animate-pulse" />
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 via-purple-600/10 to-pink-600/10 rounded-full blur-2xl animate-pulse delay-1000" />
-              <div className="relative w-full h-full">
-                <AIRobotAvatar advanced={false} />
-              </div>
+            <div className="w-80 h-80 md:w-96 md:h-96 lg:w-[420px] lg:h-[420px]">
+              <PremiumAIAvatar />
+            </div>
+            
+            {/* ====== BADGE DÉPLACÉ ICI ====== */}
+            <div className="flex flex-col items-center gap-1 mt-4">
+              <span className="inline-flex items-center gap-2 text-[10px] tracking-[0.25em] text-blue-400/80 font-mono">
+                <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
+                ● AI SYSTEM ONLINE
+                <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
+              </span>
+              <p className="text-[7px] tracking-[0.2em] text-gray-500/60 uppercase font-mono">
+                Neural Engine Running • Machine Learning • Computer Vision
+              </p>
             </div>
           </motion.div>
 
+          {/* Texte */}
           <motion.div
-            initial={{ opacity: 0, x: 60 }}
+            initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-3xl font-bold mb-4">
-              {profile.title}
+            <h3 className="text-2xl md:text-3xl font-bold text-white">
+              AI Engineer
             </h3>
-            <p className="text-gray-300 text-lg leading-relaxed">
-              {profile.description}
+            <p className="text-blue-400 font-medium text-base md:text-lg mt-1">
+              Computer Vision • NLP • Generative AI
             </p>
 
-            <div className="grid grid-cols-3 gap-4 mt-10">
+            <p className="text-gray-300 text-sm md:text-base leading-relaxed mt-3 max-w-xl">
+              Building production-ready AI systems that combine Computer Vision, 
+              Machine Learning, Large Language Models and Generative AI.
+            </p>
+
+            {/* Statistiques */}
+            <div className="grid grid-cols-3 gap-3 md:gap-4 mt-6">
               {Object.entries(profile.stats).map(([key, value]) => (
-                <div key={key} className="bg-slate-900/50 rounded-2xl p-6 text-center border border-slate-800 card-hover">
-                  <h4 className="text-3xl font-extrabold gradient-text">
+                <motion.div 
+                  key={key} 
+                  className="bg-slate-900/50 rounded-xl py-3 md:py-4 px-2 text-center border border-slate-800 hover:border-blue-500/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-blue-500/10 cursor-pointer"
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
+                >
+                  <div className="flex justify-center mb-1">
+                    {statIcons[key] || null}
+                  </div>
+                  <h4 className="text-xl md:text-2xl lg:text-3xl font-extrabold gradient-text">
                     {value}
                   </h4>
-                  <p className="mt-1 text-sm text-gray-400 capitalize">
+                  <p className="text-[10px] md:text-xs text-gray-400 capitalize">
                     {key.replace(/([A-Z])/g, ' $1').trim()}
                   </p>
-                </div>
+                </motion.div>
               ))}
             </div>
           </motion.div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 mt-20">
+        {/* Séparateur */}
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-blue-500/20 to-transparent my-16 md:my-20" />
+
+        {/* Expertise Cards */}
+        <div className="grid md:grid-cols-3 gap-6 md:gap-8">
           {profile.expertise.map((card, index) => {
             const Icon = iconMap[card.icon];
             return (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 60 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.12 }}
+                transition={{ delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="group bg-slate-900/50 p-8 rounded-3xl border border-slate-800 card-hover"
+                className="group bg-slate-900/50 p-6 md:p-8 rounded-xl md:rounded-2xl border border-slate-800 hover:border-blue-500/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-blue-500/10"
               >
-                <div className="text-blue-400 mb-6 group-hover:scale-110 transition-transform duration-300">
-                  {Icon && <Icon size={40} />}
+                <div className="text-blue-400 mb-4 md:mb-5 group-hover:scale-110 transition-transform duration-300">
+                  {Icon && <Icon size={32} className="md:w-9 md:h-9" />}
                 </div>
-                <h3 className="text-2xl font-bold mb-3">{card.title}</h3>
-                <p className="text-gray-300 leading-relaxed">{card.description}</p>
+                <h3 className="text-lg md:text-xl font-bold mb-2 md:mb-3 group-hover:text-blue-400 transition-colors text-white">
+                  {card.title}
+                </h3>
+                <p className="text-gray-300 text-sm md:text-base leading-relaxed">
+                  {card.description}
+                </p>
               </motion.div>
             );
           })}
         </div>
+
+        {/* Espace en bas */}
+        <div className="h-8 md:h-12" />
       </div>
     </section>
   );

@@ -16,12 +16,10 @@ function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Fermer le menu au clic sur un lien
   const handleLinkClick = () => {
     setMenuOpen(false);
   };
 
-  // Empêcher le scroll quand le menu est ouvert
   useEffect(() => {
     if (menuOpen) {
       document.body.style.overflow = "hidden";
@@ -70,7 +68,7 @@ function Navbar() {
             ))}
           </ul>
 
-          {/* Boutons desktop */}
+          {/* Boutons desktop - CV avec icône */}
           <div className="hidden md:flex items-center gap-4 lg:gap-5">
             <motion.a
               whileHover={{ scale: 1.1 }}
@@ -97,7 +95,7 @@ function Navbar() {
               className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 px-4 py-2 rounded-full text-sm font-semibold hover:shadow-lg hover:shadow-blue-500/25 transition-shadow"
             >
               <FaFileDownload size={14} />
-              CV
+              Download CV
             </motion.a>
           </div>
 
@@ -112,7 +110,7 @@ function Navbar() {
         </div>
       </motion.nav>
 
-      {/* Menu mobile - overlay plein écran */}
+      {/* Menu mobile */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
@@ -123,7 +121,6 @@ function Navbar() {
             className="fixed inset-0 z-40 md:hidden bg-slate-950/98 backdrop-blur-xl"
           >
             <div className="flex flex-col items-center justify-center h-full gap-6 p-8">
-              {/* Liens */}
               {links.map((link) => (
                 <motion.a
                   key={link}
@@ -137,10 +134,8 @@ function Navbar() {
                 </motion.a>
               ))}
 
-              {/* Séparateur */}
               <div className="w-16 h-px bg-slate-700 my-4" />
 
-              {/* Réseaux sociaux */}
               <div className="flex gap-8">
                 <motion.a
                   whileHover={{ scale: 1.1 }}
@@ -164,7 +159,6 @@ function Navbar() {
                 </motion.a>
               </div>
 
-              {/* Bouton CV mobile */}
               <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -177,7 +171,6 @@ function Navbar() {
                 Download CV
               </motion.a>
 
-              {/* Footer du menu */}
               <p className="absolute bottom-8 text-sm text-gray-500">
                 © {new Date().getFullYear()} {profile.name}
               </p>

@@ -11,7 +11,7 @@ function Education() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12 md:mb-16"
         >
           <h2 className="section-title">
             <span className="gradient-text">Education</span>
@@ -21,7 +21,7 @@ function Education() {
           </p>
         </motion.div>
 
-        <div className="max-w-4xl mx-auto space-y-6">
+        <div className="max-w-4xl mx-auto">
           {profile.education.map((edu, index) => (
             <motion.div
               key={index}
@@ -29,29 +29,23 @@ function Education() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="group bg-slate-900/50 p-8 rounded-2xl border border-slate-800 card-hover"
+              className="education-card"
             >
-              <div className="flex flex-wrap gap-4">
-                <div className="bg-purple-600/20 p-3 rounded-xl group-hover:bg-purple-600/30 transition h-fit">
+              <div className="flex flex-wrap gap-4 items-start">
+                <div className="bg-purple-600/20 p-3 rounded-xl flex-shrink-0">
                   <FaGraduationCap className="text-purple-400 text-2xl" />
                 </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-bold group-hover:text-purple-400 transition">
-                    {edu.degree}
-                  </h3>
-                  <div className="flex flex-wrap items-center gap-3 text-gray-400 mt-1">
-                    <span className="flex items-center gap-1">
-                      <FaUniversity size={14} />
-                      {edu.school}
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <FaCalendarAlt size={14} />
-                      {edu.period}
-                    </span>
-                  </div>
-                  <p className="text-gray-300 mt-3 leading-relaxed">
-                    {edu.description}
+                <div className="flex-1 min-w-0">
+                  <h3>{edu.degree}</h3>
+                  <p className="school">
+                    <FaUniversity className="inline mr-2 text-sm" />
+                    {edu.school}
                   </p>
+                  <p className="period">
+                    <FaCalendarAlt className="inline mr-2 text-sm" />
+                    {edu.period}
+                  </p>
+                  <p className="description">{edu.description}</p>
                 </div>
               </div>
             </motion.div>
